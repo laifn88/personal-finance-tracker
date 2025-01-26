@@ -5,30 +5,30 @@ body {
   background-color: var(--bg-color);
   color: var(--text-color);
   transition: background-color 0.3s ease, color 0.3s ease;
-  padding-top: 70px; /* Add padding to the top of the body to avoid navbar overlap */
+  padding-top: 70px; 
   min-height: 100vh;
 }
 
-/* Navbar Fixed Position */
+/* Navbar  */
 .navbar {
   background-color: var(--navbar-bg);
   color: var(--navbar-text-color);
   padding: 1rem;
-  position: fixed; /* Fix navbar to the top */
+  position: fixed; 
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1050; /* Keeps navbar on top of content */
+  z-index: 1050; 
 }
 
-/* Main Content: Avoid overlap with navbar */
+/* Main Content:*/
 .main-content {
   padding: 20px;
-  margin-top: 70px; /* Adjust this if necessary based on navbar height */
-  min-height: calc(100vh - 70px); /* Ensure content fills space below navbar */
+  margin-top: 70px; 
+  min-height: calc(100vh - 70px); 
 }
 
-/* Footer Styling */
+/* Footer  */
 footer {
   background-color: var(--navbar-bg);
   padding: 1rem;

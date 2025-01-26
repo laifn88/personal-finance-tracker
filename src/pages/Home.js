@@ -16,7 +16,7 @@ const App = () => {
   }, [darkMode]);
 
   return (
-    <div className={`app-container ${darkMode ? "dark-mode" : ""}`}> {/* Apply dark mode to a wrapper */}
+    <div className={`app-container ${darkMode ? "dark-mode" : ""}`}> 
       <BudgetOverview />
       <Charts />
       <CategoryBudget />
