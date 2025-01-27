@@ -1,7 +1,5 @@
 import BudgetOverview from "../components/BudgetOverview";
 import Charts from "../components/Charts";
-import CategoryBudget from "../components/CategoryBudget";
-import MonthlyReports from "../components/MonthlyReports";
 import DarkModeToggle from "../components/DarkModeToggle";
 import { useState, useEffect } from "react";
 
@@ -11,7 +9,7 @@ const App = () => {
   });
 
   useEffect(() => {
-    document.body.className = darkMode ? "dark-mode" : ""; // Toggle the dark mode on body
+    document.body.className = darkMode ? "dark-mode" : ""; 
     localStorage.setItem("darkMode", darkMode); // Save the mode in local storage
   }, [darkMode]);
 
@@ -19,8 +17,6 @@ const App = () => {
     <div className={`app-container ${darkMode ? "dark-mode" : ""}`}> 
       <BudgetOverview />
       <Charts />
-      <CategoryBudget />
-      <MonthlyReports />
     </div>
   );
 };

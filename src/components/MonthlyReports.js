@@ -1,8 +1,8 @@
 import { useFinance } from "../context/FinanceContext";
-import { useDarkMode } from "../context/DarkModeContext"; // Import the hook
+import { useDarkMode } from "../context/DarkModeContext";
 
 const MonthlyReports = () => {
-  const { darkMode } = useDarkMode(); // Get darkMode state
+  const { isDarkMode } = useDarkMode(); // Get darkMode state
   const { transactions } = useFinance();
 
   const monthlySummary = transactions.reduce((acc, t) => {
@@ -17,11 +17,21 @@ const MonthlyReports = () => {
   }, {});
 
   return (
-    <div className={`card p-3 ${darkMode ? "bg-dark text-light" : "bg-light text-dark"}`}>
+    <div
+    className={`card p-4 ${isDarkMode ? "bg-dark text-light" : "bg-light text-dark"}`}
+    style={{
+      backgroundColor: isDarkMode ? "#1f1f1f" : "#fff", // Ensure the same background color
+    }}
+    >
       <h3>Monthly Reports</h3>
       <ul className="list-group">
         {Object.keys(monthlySummary).map((key) => (
-          <li key={key} className={`list-group-item ${darkMode ? "bg-dark text-light" : "bg-light text-dark"}`}>
+          <li
+            key={key}
+            className={`list-group-item ${
+              isDarkMode ? "bg-dark text-light" : "bg-light text-dark"
+            }`}
+          >
             <strong>{key}:</strong> Income: ${monthlySummary[key].income}, Expenses: ${monthlySummary[key].expenses}
           </li>
         ))}

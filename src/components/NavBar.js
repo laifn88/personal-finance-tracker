@@ -1,52 +1,34 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { useDarkMode } from "../context/DarkModeContext";
+import { Link } from "react-router-dom";
+import { FaMoon, FaSun } from "react-icons/fa"; // Import icons
 
 const NavBar = () => {
-  const { darkMode, toggleDarkMode } = useDarkMode();
+  const { isDarkMode, toggleDarkMode } = useDarkMode();
 
   return (
-    <nav className={`navbar navbar-expand-lg fixed-top ${darkMode ? "bg-dark" : "bg-light"}`}>
-      <div className="container-fluid">
-        <Link className={`navbar-brand ${darkMode ? "text-light" : "text-dark"}`} to="/">
-          Finance Tracker
-        </Link>
+    <nav className="navbar navbar-expand-lg fixed-top d-flex justify-content-between">
+      <div>
+        <Link to="/">Home</Link>
+        <Link to="/transactions">Transactions</Link>
+        <Link to="/monthly-reports">Reports</Link>
+        <Link to="/about">About</Link>
+      </div>
+      <div>
         <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+          onClick={toggleDarkMode}
+          className={`dark-mode-btn ${isDarkMode ? "dark-mode" : ""}`}
         >
-          <span className="navbar-toggler-icon"></span>
+          {isDarkMode ? (
+            <>
+              <FaSun /> Light Mode
+            </>
+          ) : (
+            <>
+              <FaMoon /> Dark Mode
+            </>
+          )}
         </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav me-auto">
-            <li className="nav-item">
-              <Link className={`nav-link ${darkMode ? "text-light" : "text-dark"}`} to="/">
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className={`nav-link ${darkMode ? "text-light" : "text-dark"}`} to="/transactions">
-                Transactions
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className={`nav-link ${darkMode ? "text-light" : "text-dark"}`} to="/about">
-                About
-              </Link>
-            </li>
-          </ul>
-          <button
-            className={`btn ${darkMode ? "btn-light" : "btn-dark"}`}
-            onClick={toggleDarkMode}
-          >
-            {darkMode ? "Light Mode" : "Dark Mode"}
-          </button>
-        </div>
       </div>
     </nav>
   );

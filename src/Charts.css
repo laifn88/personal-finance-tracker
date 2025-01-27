@@ -1,0 +1,49 @@
+/* Styling for Charts component */
+.chart-container {
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    background-color: var(--chart-bg-color, #fff);
+    transition: background-color 0.3s ease;
+  }
+  
+  .bg-dark .chart-container {
+    background-color: #333;
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+  }
+  
+  h3 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--primary-text-color, #333);
+    margin-bottom: 1.5rem;
+    text-align: left; 
+  }
+  
+  .bg-dark h3 {
+    color: #fff;
+  }
+  
+  .d-flex {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .chart-container {
+    margin: 10px;
+    flex: 1;
+    max-width: 48%;
+  }
+  
+  @media (max-width: 768px) {
+    .chart-container {
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+  
+  .bg-light, .bg-dark {
+    transition: background-color 0.3s ease;
+  }
+  

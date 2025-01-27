@@ -3,7 +3,7 @@ import { useFinance } from "../context/FinanceContext";
 import { useDarkMode } from "../context/DarkModeContext"; // Import the hook
 
 const AddTransactionForm = () => {
-  const { darkMode } = useDarkMode(); // Get darkMode state
+  const { isDarkMode } = useDarkMode(); // Get darkMode state
   const { setTransactions, transactions } = useFinance();
   const [type, setType] = useState("Income");
   const [amount, setAmount] = useState("");
@@ -21,13 +21,21 @@ const AddTransactionForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={darkMode ? "bg-dark text-light p-3" : "bg-light text-dark p-3"}>
+    <form
+      onSubmit={handleSubmit}
+      className={`${
+        isDarkMode ? "bg-dark text-light" : "bg-light text-dark"
+      } p-4 rounded shadow form-and-list w-100`}
+    >
       <div className="mb-3">
         <label className="form-label">Type</label>
         <select
-          className={`form-select ${darkMode ? "bg-dark text-light" : "bg-light text-dark"}`}
+          className={`form-select ${isDarkMode ? "bg-dark text-light" : "bg-light text-dark"}`}
           value={type}
           onChange={(e) => setType(e.target.value)}
+          style={{
+            backgroundColor: isDarkMode ? "#1f1f1f" : "#fff", 
+          }}
         >
           <option value="Income">Income</option>
           <option value="Expense">Expense</option>
@@ -37,7 +45,7 @@ const AddTransactionForm = () => {
         <label className="form-label">Amount</label>
         <input
           type="number"
-          className={`form-control ${darkMode ? "bg-dark text-light" : "bg-light text-dark"}`}
+          className={`form-control ${isDarkMode ? "bg-dark text-light" : "bg-light text-dark"}`}
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
           required
@@ -47,13 +55,16 @@ const AddTransactionForm = () => {
         <label className="form-label">Category</label>
         <input
           type="text"
-          className={`form-control ${darkMode ? "bg-dark text-light" : "bg-light text-dark"}`}
+          className={`form-control ${isDarkMode ? "bg-dark text-light" : "bg-light text-dark"}`}
           value={category}
           onChange={(e) => setCategory(e.target.value)}
           required
         />
       </div>
-      <button type="submit" className={`btn ${darkMode ? "btn-light" : "btn-dark"}`}>
+      <button
+        type="submit"
+        className={`btn ${isDarkMode ? "btn-light" : "btn-dark"} w-auto mt-3`}
+      >
         Add Transaction
       </button>
     </form>
